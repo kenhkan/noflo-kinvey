@@ -41,7 +41,9 @@
   },
   "noflo": {
     "components": {
-      "DataStoreFind": "./components/DataStoreFind.coffee"
+      "Kinvey": "./components/Kinvey.coffee",
+      "DataStoreFind": "./components/DataStoreFind.coffee",
+      "DataStoreSave": "./components/DataStoreSave.coffee"
     }
   }
 }
