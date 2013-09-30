@@ -18,7 +18,8 @@
   ],
   "dependencies": {
     "noflo": "~0.4.0",
-    "kinvey": "~1.1.1"
+    "kinvey": "~1.1.1",
+    "lodash": "~2.2.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -43,7 +44,8 @@
     "components": {
       "Kinvey": "./components/Kinvey.coffee",
       "DataStoreFind": "./components/DataStoreFind.coffee",
-      "DataStoreSave": "./components/DataStoreSave.coffee"
+      "DataStoreSave": "./components/DataStoreSave.coffee",
+      "Query": "./components/Query.coffee"
     }
   }
 }

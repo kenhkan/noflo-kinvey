@@ -75,3 +75,18 @@ Wrapper of `Kinvey.DataStore.save(3)`
 #### Out-Ports
 
 * *OUT*: A promise
+
+
+### Query
+
+Wrapper around `Kinvey.Query`
+
+Each parameter port (EQUALTO, etc) accepts a series of IPs. Each IP is an array
+corresponding to the Kinvey documentation. IPs in the same connection are
+applied together. A new connection to a port resets that particular parameter.
+
+#### In-Ports
+
+* *IN*: Pass in anything and a `Kinvey.Query` object would be created
+* OPTIONS: Options
+* EQUALTO: calls `equalTo(field, value)`
