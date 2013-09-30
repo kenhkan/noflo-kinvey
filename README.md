@@ -52,6 +52,7 @@ Wrapper of `Kinvey.DataStore.find(3)`
 
 * *IN*: A Kinvey.Query object from `kinvey/Query`
 * *COLLECTION*: The name of the collection
+* *KINVEY*: An instance of Kinvey
 * OPTIONS: Options that `Kinvey.DataStore.find(3)` expects
 
 #### Out-Ports
@@ -68,6 +69,7 @@ Wrapper of `Kinvey.DataStore.save(3)`
 
 * *IN*: The document to save
 * *COLLECTION*: The name of the collection
+* *KINVEY*: An instance of Kinvey
 * OPTIONS: Options that `Kinvey.DataStore.save(3)` expects
 
 #### Out-Ports
