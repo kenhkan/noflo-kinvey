@@ -6,18 +6,17 @@ else
   DataStoreFind = require 'noflo-kinvey/components/DataStoreFind.js'
 
 describe 'DataStoreFind component', ->
-  c = null
-  ins = null
-  out = null
+  globals = {}
+
   beforeEach ->
-    c = DataStoreFind.getComponent()
-    ins = noflo.internalSocket.createSocket()
-    out = noflo.internalSocket.createSocket()
-    c.inPorts.in.attach ins
-    c.outPorts.out.attach out
+    globals.c = DataStoreFind.getComponent()
+    globals.ins = noflo.internalSocket.createSocket()
+    globals.out = noflo.internalSocket.createSocket()
+    globals.c.inPorts.in.attach globals.ins
+    globals.c.outPorts.out.attach globals.out
 
   describe 'when instantiated', ->
     it 'should have an input port', ->
-      chai.expect(c.inPorts.in).to.be.an 'object'
+      chai.expect(globals.c.inPorts.in).to.be.an 'object'
     it 'should have an output port', ->
-      chai.expect(c.outPorts.out).to.be.an 'object'
+      chai.expect(globals.c.outPorts.out).to.be.an 'object'
