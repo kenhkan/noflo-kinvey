@@ -16,6 +16,13 @@ class DataStoreSave extends noflo.Component
     @inPorts.kinvey.on 'data', (@kinvey) =>
     @inPorts.options.on 'data', (@options) =>
 
+    @inPorts.in.on 'begingroup', (group) =>
+      @outPorts.out.beginGroup group
+    @inPorts.in.on 'endgroup', (group) =>
+      @outPorts.out.endGroup()
+    @inPorts.in.on 'disconnect', =>
+      @outPorts.out.disconnect()
+
     @inPorts.in.on 'data', (doc) =>
       # Handle missing values
       unless @collection?
@@ -34,6 +41,5 @@ class DataStoreSave extends noflo.Component
       # Apply the query and forward
       promise = @kinvey.DataStore.save @collection, doc, @options
       @outPorts.out.send promise
-      @outPorts.out.disconnect()
 
 exports.getComponent = -> new DataStoreSave

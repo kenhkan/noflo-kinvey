@@ -1,7 +1,7 @@
 noflo = require 'noflo'
 Kinvey = require 'kinvey'
 
-class DataStoreFind extends noflo.Component
+class DataStoreUpdate extends noflo.Component
   constructor: ->
     @inPorts =
       in: new noflo.Port 'object'
@@ -23,7 +23,7 @@ class DataStoreFind extends noflo.Component
     @inPorts.in.on 'disconnect', =>
       @outPorts.out.disconnect()
 
-    @inPorts.in.on 'data', (query) =>
+    @inPorts.in.on 'data', (doc) =>
       # Handle missing values
       unless @collection?
         @outPorts.error.send new Error 'No collection name provided'
@@ -33,13 +33,17 @@ class DataStoreFind extends noflo.Component
         @outPorts.error.send new Error 'No Kinvey instance provided'
         @outPorts.error.disconnect()
         return
-      unless query instanceof @kinvey.Query
-        @outPorts.error.send new Error 'Not a Kinvey.Query object'
+      unless typeof doc is 'object'
+        @outPorts.error.send new Error 'Not an object'
+        @outPorts.error.disconnect()
+        return
+      unless doc._id?
+        @outPorts.error.send new Error 'No ID provided'
         @outPorts.error.disconnect()
         return
 
-      # Apply and forward the query
-      promise = @kinvey.DataStore.find @collection, query, @options
+      # Apply the query and forward
+      promise = @kinvey.DataStore.update @collection, doc, @options
       @outPorts.out.send promise
 
-exports.getComponent = -> new DataStoreFind
+exports.getComponent = -> new DataStoreUpdate
