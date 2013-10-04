@@ -53,7 +53,7 @@ Wrapper of `Kinvey.DataStore.find(3)`
 * *IN*: A Kinvey.Query object from `kinvey/Query`
 * *COLLECTION*: The name of the collection
 * *KINVEY*: An instance of Kinvey
-* OPTIONS: Options that `Kinvey.DataStore.find(3)` expects
+* OPTIONS: Ditto
 
 #### Out-Ports
 
@@ -70,7 +70,7 @@ Wrapper of `Kinvey.DataStore.save(3)`
 * *IN*: The document to save
 * *COLLECTION*: The name of the collection
 * *KINVEY*: An instance of Kinvey
-* OPTIONS: Options that `Kinvey.DataStore.save(3)` expects
+* OPTIONS: Ditto
 
 #### Out-Ports
 
@@ -88,5 +88,20 @@ applied together. A new connection to a port resets that particular parameter.
 #### In-Ports
 
 * *IN*: Pass in anything and a `Kinvey.Query` object would be created
-* OPTIONS: Options
+* OPTIONS: Ditto
 * EQUALTO: calls `equalTo(field, value)`
+
+
+### UserLogin
+
+Wrapper around `Kinvey.User.login(3)`
+
+#### In-Ports
+
+* *USER*: Username or user data
+* PASSWORD: The password
+* OPTIONS: Ditto
+
+#### Out-Ports
+
+* *OUT*: A promise
